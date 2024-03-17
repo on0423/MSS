@@ -9,7 +9,7 @@ import Foundation
 
 struct RegisterTradingHistoryModel: Identifiable, Codable {
     var id: String
-    var userName: String
+    var userID: String
     var title: String
     var selectedAction: String
     var entryPrice: Int

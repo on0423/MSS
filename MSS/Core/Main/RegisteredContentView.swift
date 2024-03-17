@@ -187,7 +187,7 @@ struct RegisteredContentView: View {
 
                     Button(action: {
                         // 保存処理を実行
-                        saveTradingHistory(userName: user.userName)
+                        saveTradingHistory(userID: user.id)
                     }) {
                         Text("保存")
                             .padding()
@@ -248,7 +248,7 @@ struct RegisteredContentView: View {
     }
     
     // 履歴登録APIを呼び出して、データを保存し、入力情報をクリアする
-    func saveTradingHistory(userName:String) {
+    func saveTradingHistory(userID:String) {
         Task {
             do {
                 let entryPriceInt = Int(entryPrice) ?? 0
@@ -259,7 +259,7 @@ struct RegisteredContentView: View {
                 // 非同期関数を呼び出し、完了を待つ
                 for data in recordDataList {
                     try await saveTradingHistoryAPI(
-                        userName: userName, title: data.title, selectedAction: selectedActionString,
+                        userID: userID, title: data.title, selectedAction: selectedActionString,
                         entryPrice: entryPriceInt, lossCutPrice: lossCutPriceInt, lc: lc, maxPrice: maxPriceInt, max: max,
                         diffEntryFlag: data.diffEntryFlag, diffEntryPrice: data.diffEntryPrice,
                         maisu: data.maisu, profitTakingFlag: data.profitTakingFlag, lossCutFlag: data.lossCutFlag, settlementPrice: data.settlementPrice,

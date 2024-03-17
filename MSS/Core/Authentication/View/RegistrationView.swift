@@ -9,7 +9,6 @@ import SwiftUI
 
 struct RegistrationView: View {
     @State private var fullname = ""
-    @State private var userName = ""
     @State private var email = ""
     @State private var password = ""
     @State private var confirmPassword = ""
@@ -30,11 +29,6 @@ struct RegistrationView: View {
                 InputView(text: $fullname,
                           title: "氏名",
                           placeholder: "氏名を入力してください")
-                
-                // アルファベット小文字のみ
-                InputView(text: $userName,
-                          title: "ユーザー名",
-                          placeholder: "ユーザー名を入力してください")
                 
                 InputView(text: $email,
                           title: "メールアドレス",
@@ -74,8 +68,7 @@ struct RegistrationView: View {
                 Task {
                     try await viewModel.createUser(withEmail: email,
                                                    password: password,
-                                                   fullname: fullname,
-                                                   userName: userName)
+                                                   fullname: fullname)
                 }
             } label: {
                 HStack {

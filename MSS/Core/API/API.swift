@@ -13,7 +13,7 @@ import FirebaseFirestoreSwift
 
 // 履歴登録API
 func saveTradingHistoryAPI(
-    userName: String, title: String, selectedAction: String, entryPrice: Int, lossCutPrice: Int,
+    userID: String, title: String, selectedAction: String, entryPrice: Int, lossCutPrice: Int,
     lc: Int, maxPrice: Int, max: Int, diffEntryFlag: Bool, diffEntryPrice: Int?,
     maisu: Int, profitTakingFlag: Bool, lossCutFlag: Bool,
     settlementPrice: Int, range: Int, PL: Int, winLose: String, startDate: Date,
@@ -62,7 +62,7 @@ func saveTradingHistoryAPI(
 
         let data: [String: Any] = [
             "id": documentId,
-            "userName": userName,
+            "userID": userID,
             "title": title,
             "selectedAction": selectedAction,
             "entryPrice": actualEntryPrice,
@@ -94,7 +94,7 @@ func saveTradingHistoryAPI(
 
 
 // 取引履歴一覧初期表示API
-func fetchTradingHistory1stAPI(userName: String) async throws -> [TradingHistoryModel] {
+func fetchTradingHistory1stAPI(userID: String) async throws -> [TradingHistoryModel] {
     let db = Firestore.firestore()
     var tradingHistoryList: [TradingHistoryModel] = []
     
@@ -126,9 +126,9 @@ func fetchTradingHistory1stAPI(userName: String) async throws -> [TradingHistory
     let weekStartUTC = dateFormatter.date(from: weekStartString)!
     let weekEndUTC = dateFormatter.date(from: weekEndString)!
 
-    // Firestoreのクエリを使用して特定のuserNameに一致するドキュメントを検索
+    // Firestoreのクエリを使用して特定のuserIDに一致するドキュメントを検索
     let querySnapshot = try await db.collection("five_MA") // デフォルトとして"five_MA"コレクションの実行日が含まれる週のデータ(平日のみ)を取得
-        .whereField("userName", isEqualTo: userName)
+        .whereField("userID", isEqualTo: userID)
         .whereField("startDate", isGreaterThanOrEqualTo: weekStartUTC)
         .whereField("startDate", isLessThanOrEqualTo: weekEndUTC)
         .getDocuments()
@@ -137,7 +137,7 @@ func fetchTradingHistory1stAPI(userName: String) async throws -> [TradingHistory
     for document in querySnapshot.documents {
         let data = document.data()
         if let id = data["id"] as? String,
-           let userName = data["userName"] as? String,
+           let userID = data["userID"] as? String,
            let title = data["title"] as? String,
            let selectedAction = data["selectedAction"] as? String,
            let entryPrice = data["entryPrice"] as? Int,
@@ -165,7 +165,7 @@ func fetchTradingHistory1stAPI(userName: String) async throws -> [TradingHistory
 
             let tradingHistoryModel = TradingHistoryModel(
                 id: id,
-                userName: userName,
+                userID: userID,
                 title: title,
                 selectedAction: selectedAction,
                 entryPrice: entryPrice,
@@ -194,7 +194,7 @@ func fetchTradingHistory1stAPI(userName: String) async throws -> [TradingHistory
 }
 
 // データ検索API
-func searchTradingHistoryAPI(userName: String, timeAxis: String, selectedOption: String, startDate: Date, finishDate: Date) async throws -> [TradingHistoryModel] {
+func searchTradingHistoryAPI(userID: String, timeAxis: String, selectedOption: String, startDate: Date, finishDate: Date) async throws -> [TradingHistoryModel] {
     let db = Firestore.firestore()
     var tradingHistoryList: [TradingHistoryModel] = []
     var calendar = Calendar.current
@@ -236,9 +236,9 @@ func searchTradingHistoryAPI(userName: String, timeAxis: String, selectedOption:
     let finishDateWithTime = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: finishDate)!
     let finishDateUTC = convertToUTC(date: finishDateWithTime)
 
-    // Firestoreのクエリを使用して選択された期間内で特定のuserNameに一致するドキュメントを検索
+    // Firestoreのクエリを使用して選択された期間内で特定のuserIDに一致するドキュメントを検索
     let querySnapshot = try await db.collection(collectionName)
-        .whereField("userName", isEqualTo: userName)
+        .whereField("userID", isEqualTo: userID)
         .whereField("startDate", isGreaterThanOrEqualTo: startDateUTC)
         .whereField("startDate", isLessThanOrEqualTo: finishDateUTC)
         .getDocuments()
@@ -247,7 +247,7 @@ func searchTradingHistoryAPI(userName: String, timeAxis: String, selectedOption:
     for document in querySnapshot.documents {
         let data = document.data()
         if let id = data["id"] as? String,
-           let userName = data["userName"] as? String,
+           let userID = data["userID"] as? String,
            let title = data["title"] as? String,
            let selectedAction = data["selectedAction"] as? String,
            let entryPrice = data["entryPrice"] as? Int,
@@ -275,7 +275,7 @@ func searchTradingHistoryAPI(userName: String, timeAxis: String, selectedOption:
 
             let tradingHistoryModel = TradingHistoryModel(
                 id: id,
-                userName: userName,
+                userID: userID,
                 title: title,
                 selectedAction: selectedAction,
                 entryPrice: entryPrice,
@@ -306,7 +306,7 @@ func searchTradingHistoryAPI(userName: String, timeAxis: String, selectedOption:
 // 履歴編集API
 func editTradingHistoryAPI(
     id: String, // 編集するドキュメントのIDを引数として追加
-    userName: String, title: String, selectedAction: String, entryPrice: Int, lossCutPrice: Int,
+    userID: String, title: String, selectedAction: String, entryPrice: Int, lossCutPrice: Int,
     lc: Int, maxPrice: Int, max: Int,
     maisu: Int, profitTakingFlag: Bool, lossCutFlag: Bool,
     settlementPrice: Int, range: Int, PL: Int, winLose: String, startDate: Date,
@@ -345,7 +345,7 @@ func editTradingHistoryAPI(
 
         let data: [String: Any] = [
             "id": id,
-            "userName": userName,
+            "userID": userID,
             "title": title,
             "selectedAction": selectedAction,
             "entryPrice": entryPrice,
@@ -402,7 +402,7 @@ func fetchEditedTradingHistoryAPI(id: String, tradeID: String) async throws -> T
 
     // クエリの結果からデータを抽出し、RegisterAreaDataのリストを作成
     if let data = documentSnapshot.data() {
-        if let userName = data["userName"] as? String,
+        if let userID = data["userID"] as? String,
            let title = data["title"] as? String,
            let selectedAction = data["selectedAction"] as? String,
            let entryPrice = data["entryPrice"] as? Int,
@@ -429,7 +429,7 @@ func fetchEditedTradingHistoryAPI(id: String, tradeID: String) async throws -> T
 
             return TradingHistoryModel(
                 id: id,
-                userName: userName,
+                userID: userID,
                 title: title,
                 selectedAction: selectedAction,
                 entryPrice: entryPrice,

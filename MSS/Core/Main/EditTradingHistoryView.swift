@@ -371,7 +371,7 @@ struct EditTradingHistoryView: View {
         Task {
             do {
                 let id = tradingHistoryModel.id
-                let userName = tradingHistoryModel.userName
+                let userID = tradingHistoryModel.userID
                 let title = tradingHistoryModel.title
                 let tradeID = tradingHistoryModel.tradeID
                 let selectedActionString = selectedAction.rawValue
@@ -383,7 +383,7 @@ struct EditTradingHistoryView: View {
 
                 // 非同期関数を呼び出し、完了を待つ
                 try await editTradingHistoryAPI(
-                    id: id, userName: userName, title: title, selectedAction: selectedActionString,
+                    id: id, userID: userID, title: title, selectedAction: selectedActionString,
                     entryPrice: entryPriceInt, lossCutPrice: lossCutPriceInt, lc: lc, maxPrice: maxPriceInt, max: max,
                     maisu: maisu, profitTakingFlag: profitTakingFlag, lossCutFlag: lossCutFlag, settlementPrice: settlementPriceInt,
                     range: range, PL: PL, winLose: winLoseString, startDate: startDate, finishDate: finishDate,

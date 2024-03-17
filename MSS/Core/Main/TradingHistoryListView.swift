@@ -33,11 +33,11 @@ struct TradingHistoryListView: View {
     @State private var alertMessage = ""  // アラートに表示するメッセージ内容
     
     // ビューが表示されるときに取引履歴データを取得する
-    private func fetchTradingHistory(userName: String) {
+    private func fetchTradingHistory(userID: String) {
         Task {
             do {
                 // APIを呼び出してデータを取得
-                let fetchedData = try await fetchTradingHistory1stAPI(userName: userName)
+                let fetchedData = try await fetchTradingHistory1stAPI(userID: userID)
                 // 取得したデータを状態変数に格納
                 tradingHistoryList = fetchedData
             } catch {
@@ -68,11 +68,10 @@ struct TradingHistoryListView: View {
             .reduce(0) { $0 + $1.PL }
     }
     
-//    var totalMax: Int {   // 最大幅の合計
-//        tradingHistoryList
-//            .filter { $0.max < 0 }
-//            .reduce(0) { $0 + $1.max }
-//    }
+    var totalMax: Int {   // 最大幅の合計
+        tradingHistoryList
+            .reduce(0) { $0 + $1.max }
+    }
     
     
     var body: some View {
@@ -90,105 +89,11 @@ struct TradingHistoryListView: View {
                 .padding(.leading, 30)
                 
                 if isSearchAreaVisible {
-                    VStack {
-                        VStack {
-                            Section(header: CustomHeader(text: "時間軸")) {
-                                Picker("選択してください", selection: $selectedTimeAxis) {
-                                    ForEach(timeAxis, id: \.self) { option in
-                                        Text(option).tag(option)
-                                    }
-                                }
-                                .pickerStyle(SegmentedPickerStyle())
-                                .background(Color.gray.opacity(0.5))
-                                .cornerRadius(10)
-                            }
-                        }
-                        
-                        if selectedTimeAxis == "5分" {
-                            VStack {
-                                Section(header: CustomHeader(text: "区分")) {
-                                    Picker("選択してください", selection: $selectedOption5minutes) {
-                                        ForEach(options5minutes, id: \.self) { option in
-                                            Text(option).tag(option)
-                                        }
-                                    }
-                                    .pickerStyle(SegmentedPickerStyle())
-                                    .background(Color.gray.opacity(0.5))
-                                    .cornerRadius(10)
-                                }
-                            }
-                        }else {
-                            VStack {
-                                Section(header: CustomHeader(text: "区分")) {
-                                    Picker("選択してください", selection: $selectedOption15minutes) {
-                                        ForEach(options15minutes, id: \.self) { option in
-                                            Text(option).tag(option)
-                                        }
-                                    }
-                                    .pickerStyle(SegmentedPickerStyle())
-                                    .background(Color.gray.opacity(0.5))
-                                    .cornerRadius(10)
-                                }
-                            }
-                        }
-                        // 日付選択エリア
-                        HStack {
-                            Text("期間")
-                            Spacer()
-                        }
-                        HStack {
-                            DatePicker("", selection: $displayStartDate, displayedComponents: .date)
-                                .labelsHidden()
-                                .environment(\.locale, Locale(identifier: "ja_JP"))
-                            Text("〜")
-                            DatePicker("", selection: $displayEndDate, displayedComponents: .date)
-                                .labelsHidden()
-                                .environment(\.locale, Locale(identifier: "ja_JP"))
-                        }
-                        .padding()
-                        .background(Color.gray.opacity(0.5))
-                        .cornerRadius(10)
-                        
-                        // 検索ボタン
-                        Button("検索") {
-                            // 検索条件に基づいて取引履歴データを取得する
-                            Task {
-                                do {
-                                    // 時間軸に応じた選択肢を決定
-                                    let selectedOption = selectedTimeAxis == "5分" ? selectedOption5minutes : selectedOption15minutes
-                                    
-                                    // APIを呼び出してデータを取得
-                                    let fetchedData = try await searchTradingHistoryAPI(
-                                        userName: viewModel.currentUser?.userName ?? "",
-                                        timeAxis: selectedTimeAxis,
-                                        selectedOption: selectedOption,
-                                        startDate: displayStartDate,
-                                        finishDate: displayEndDate
-                                    )
-                                    // 取得したデータを状態変数に格納
-                                    tradingHistoryList = fetchedData
-                                } catch {
-                                    print("取引履歴の検索に失敗しました: \(error)")
-                                    alertMessage = "取引履歴の検索に失敗しました"
-                                    showAlert = true  // アラートを表示
-                                }
-                            }
-                        }
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundStyle(.white)
-                        .cornerRadius(10)
-                    }
-                    .padding(20)
-                    //.background(.gray)
-                    .overlay(RoundedRectangle(cornerRadius: 30)
-                        .stroke(Color.secondary, lineWidth: 10))
-                    .clipShape(RoundedRectangle(cornerRadius: 30))
-                    .padding(20)  // 検索エリアの外側に余白を追加
+                    SearchAreaView(selectedTimeAxis: $selectedTimeAxis, selectedOption5minutes: $selectedOption5minutes, selectedOption15minutes: $selectedOption15minutes, displayStartDate: $displayStartDate, displayEndDate: $displayEndDate, timeAxis: timeAxis, options5minutes: options5minutes, options15minutes: options15minutes, performSearch: performSearch)
                     
                 }
 
-                DataView(tradingHistoryList: $tradingHistoryList, numberOfWins: numberOfWins, numberOfLose: numberOfLose, totalProfit: totalProfit, totalLoss: totalLoss)
+                DataView(tradingHistoryList: $tradingHistoryList, numberOfWins: numberOfWins, numberOfLose: numberOfLose, totalProfit: totalProfit, totalLoss: totalLoss, totalMax: totalMax)
                     .padding(.horizontal ,20)
                 
                 DataListView(tradingHistoryList: $tradingHistoryList)
@@ -198,7 +103,7 @@ struct TradingHistoryListView: View {
         .onAppear {
             // ビューが表示されるときにデータを取得
             if let user = viewModel.currentUser {
-                fetchTradingHistory(userName: user.userName)
+                fetchTradingHistory(userID: user.id)
             } else {
                 print("取引履歴の取得に失敗しました:")
                 alertMessage = "取引履歴の取得に失敗しました"
@@ -214,6 +119,32 @@ struct TradingHistoryListView: View {
         .foregroundStyle(.white)
         .navigationBarTitle("取引履歴一覧", displayMode: .inline)
     }
+    
+    // 検索条件に基づいて取引履歴データを取得するロジック
+    func performSearch() {
+        // 検索条件に基づいて取引履歴データを取得する
+        Task {
+            do {
+                // 時間軸に応じた選択肢を決定
+                let selectedOption = selectedTimeAxis == "5分" ? selectedOption5minutes : selectedOption15minutes
+                
+                // APIを呼び出してデータを取得
+                let fetchedData = try await searchTradingHistoryAPI(
+                    userID: viewModel.currentUser?.id ?? "",
+                    timeAxis: selectedTimeAxis,
+                    selectedOption: selectedOption,
+                    startDate: displayStartDate,
+                    finishDate: displayEndDate
+                )
+                // 取得したデータを状態変数に格納
+                tradingHistoryList = fetchedData
+            } catch {
+                print("取引履歴の検索に失敗しました: \(error)")
+                alertMessage = "取引履歴の検索に失敗しました"
+                showAlert = true  // アラートを表示
+            }
+        }
+    }
 }
 
 // カスタムセクションヘッダービュー
@@ -228,6 +159,93 @@ struct CustomHeader: View {
     }
 }
 
+// 検索エリア
+struct SearchAreaView: View {
+    @Binding var selectedTimeAxis: String
+    @Binding var selectedOption5minutes: String
+    @Binding var selectedOption15minutes: String
+    @Binding var displayStartDate: Date
+    @Binding var displayEndDate: Date
+    let timeAxis: [String]
+    let options5minutes: [String]
+    let options15minutes: [String]
+    let performSearch: () -> Void // 検索処理を実行するクロージャ
+
+    var body: some View {
+        VStack {
+            VStack {
+                Section(header: CustomHeader(text: "時間軸")) {
+                    Picker("選択してください", selection: $selectedTimeAxis) {
+                        ForEach(timeAxis, id: \.self) { option in
+                            Text(option).tag(option)
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    .background(Color.gray.opacity(0.5))
+                    .cornerRadius(10)
+                }
+            }
+            
+            if selectedTimeAxis == "5分" {
+                VStack {
+                    Section(header: CustomHeader(text: "区分")) {
+                        Picker("選択してください", selection: $selectedOption5minutes) {
+                            ForEach(options5minutes, id: \.self) { option in
+                                Text(option).tag(option)
+                            }
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
+                        .background(Color.gray.opacity(0.5))
+                        .cornerRadius(10)
+                    }
+                }
+            }else {
+                VStack {
+                    Section(header: CustomHeader(text: "区分")) {
+                        Picker("選択してください", selection: $selectedOption15minutes) {
+                            ForEach(options15minutes, id: \.self) { option in
+                                Text(option).tag(option)
+                            }
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
+                        .background(Color.gray.opacity(0.5))
+                        .cornerRadius(10)
+                    }
+                }
+            }
+            // 日付選択エリア
+            HStack {
+                Text("期間")
+                Spacer()
+            }
+            HStack {
+                DatePicker("", selection: $displayStartDate, displayedComponents: .date)
+                    .labelsHidden()
+                    .environment(\.locale, Locale(identifier: "ja_JP"))
+                Text("〜")
+                DatePicker("", selection: $displayEndDate, displayedComponents: .date)
+                    .labelsHidden()
+                    .environment(\.locale, Locale(identifier: "ja_JP"))
+            }
+            .padding()
+            .background(Color.gray.opacity(0.5))
+            .cornerRadius(10)
+            
+            // 検索ボタン
+            Button("検索", action: performSearch)
+                            .padding()
+                            .background(Color.blue)
+                            .foregroundStyle(.white)
+                            .cornerRadius(10)
+        }
+        .padding(20)
+        .overlay(RoundedRectangle(cornerRadius: 30)
+            .stroke(Color.secondary, lineWidth: 10))
+        .clipShape(RoundedRectangle(cornerRadius: 30))
+        .padding(20)  // 検索エリアの外側に余白を追加
+    }
+}
+
 // データエリア
 struct DataView: View {
     @Binding var tradingHistoryList: [TradingHistoryModel]
@@ -235,7 +253,7 @@ struct DataView: View {
     var numberOfLose: Int
     var totalProfit: Int
     var totalLoss: Int
-//    var totalmax: Int
+    var totalMax: Int
 
     var body: some View {
         // データ表示エリア
@@ -300,8 +318,8 @@ struct DataView: View {
                 }
                 
                 // 平均最大幅の計算
-//                let averageMax = tradingHistoryList.count > 0 ? Double(totalmax) / Double(tradingHistoryList.count) : 0.0
-//                Text("平均最大幅: \(averageMax)")
+                let averageMax = tradingHistoryList.count > 0 ? Double(totalMax) / Double(tradingHistoryList.count) : 0.0
+                Text("平均最大幅: \(String(format: "%.2f", averageMax))")
             }.padding()
             .overlay(RoundedRectangle(cornerRadius: 30)
                 .stroke(Color.secondary, lineWidth: 10))

@@ -74,6 +74,13 @@ struct LoginView: View {
             .background(Color.blue2)
             .foregroundStyle(.white)
         }
+//        .alert("エラー", isPresented: $viewModel.hasError, presenting: viewModel.errorMessage) { message in
+//            Button("OK") {
+//                // OKボタンが押されたときの処理
+//            }
+//        } message: { message in
+//            Text(viewModel.errorMessage ?? "不明なエラーが発生しました。")
+//        }
     }
 }
 

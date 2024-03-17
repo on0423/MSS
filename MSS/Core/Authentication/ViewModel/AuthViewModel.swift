@@ -18,6 +18,7 @@ protocol AuthenticationFormProtocol {
 class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
+    //@Published var errorMessage: String?
     
     init() {
         self.userSession = Auth.auth().currentUser
@@ -34,19 +35,25 @@ class AuthViewModel: ObservableObject {
             await fetchUser()
         } catch {
             print("DEBUG: サインインに失敗しました： \(error.localizedDescription)")
+//            self.errorMessage = "サインインに失敗しました"
+            self.userSession = nil
+            self.currentUser = nil
         }
     }
     
-    func createUser(withEmail email: String, password: String, fullname: String, userName: String) async throws {
+    func createUser(withEmail email: String, password: String, fullname: String) async throws {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             self.userSession = result.user
-            let user = User(id: result.user.uid, fullname: fullname, userName: userName, email: email)
+            let user = User(id: result.user.uid, fullname: fullname, email: email)
             let encodedUser = try Firestore.Encoder().encode(user)
             try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
             await fetchUser()
         } catch {
-            print("DEBUG: ユーザーの作成に失敗しました。：\(error.localizedDescription)")
+            print("DEBUG: ユーザーの作成に失敗しました：\(error.localizedDescription)")
+//            self.errorMessage = "ユーザーの作成に失敗しました"
+            self.userSession = nil
+            self.currentUser = nil
         }
     }
     
@@ -60,12 +67,9 @@ class AuthViewModel: ObservableObject {
             self.currentUser = nil  //現在のユーザーのデータモデルを空にする
         } catch {
             print("DEBUG: サインアウトに失敗しました： \(error.localizedDescription)")
+//            self.errorMessage = "サインアウトに失敗しました"
         }
             
-    }
-    
-    func deleteAccount() {
-        
     }
     
     func fetchUser() async {
@@ -75,4 +79,3 @@ class AuthViewModel: ObservableObject {
         self.currentUser = try? snapshot.data(as: User.self)
     }
 }
-
