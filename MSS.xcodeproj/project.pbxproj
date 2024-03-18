@@ -7,6 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B03FD6F72B9C612000D75F18 /* Calculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FD6F62B9C612000D75F18 /* Calculations.swift */; };
+		B03FD6F92B9C614D00D75F18 /* Judgement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FD6F82B9C614D00D75F18 /* Judgement.swift */; };
+		B03FD6FC2B9C619100D75F18 /* RegisterTradingHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FD6FB2B9C619100D75F18 /* RegisterTradingHistoryModel.swift */; };
+		B03FD6FE2B9C61C700D75F18 /* RegisterAreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FD6FD2B9C61C700D75F18 /* RegisterAreaData.swift */; };
+		B03FD7002B9C61E500D75F18 /* TradingHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FD6FF2B9C61E500D75F18 /* TradingHistoryModel.swift */; };
+		B03FD7022B9C61FC00D75F18 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FD7012B9C61FC00D75F18 /* User.swift */; };
+		B03FD7052B9C63F000D75F18 /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FD7042B9C63F000D75F18 /* SettingsRowView.swift */; };
+		B03FD7072B9C641800D75F18 /* RegisterConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FD7062B9C641800D75F18 /* RegisterConfirmView.swift */; };
+		B03FD7092B9C646A00D75F18 /* RecordArea5minutesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FD7082B9C646A00D75F18 /* RecordArea5minutesView.swift */; };
+		B03FD70B2B9C64A600D75F18 /* RecordArea15minutesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FD70A2B9C64A600D75F18 /* RecordArea15minutesView.swift */; };
+		B03FD70D2B9C64EC00D75F18 /* CheckboxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FD70C2B9C64EC00D75F18 /* CheckboxStyle.swift */; };
+		B03FD70F2B9C650F00D75F18 /* EditConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FD70E2B9C650F00D75F18 /* EditConfirmView.swift */; };
+		B03FD7112B9C655300D75F18 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FD7102B9C655300D75F18 /* InputView.swift */; };
+		B03FD7162B9C65E200D75F18 /* EditTradingHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FD7152B9C65E200D75F18 /* EditTradingHistoryView.swift */; };
+		B03FD7182B9C660500D75F18 /* TradingHistoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FD7172B9C660500D75F18 /* TradingHistoryDetailView.swift */; };
+		B03FD71A2B9C662600D75F18 /* TradingHistoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FD7192B9C662600D75F18 /* TradingHistoryListView.swift */; };
+		B03FD71C2B9C666800D75F18 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FD71B2B9C666800D75F18 /* MainMenuView.swift */; };
+		B03FD71E2B9C668800D75F18 /* RegisteredContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FD71D2B9C668800D75F18 /* RegisteredContentView.swift */; };
+		B03FD7202B9C66A700D75F18 /* RegisterTradingHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FD71F2B9C66A700D75F18 /* RegisterTradingHistoryView.swift */; };
+		B03FD7242B9C673500D75F18 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FD7232B9C673500D75F18 /* AuthViewModel.swift */; };
+		B03FD7272B9C676F00D75F18 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FD7262B9C676F00D75F18 /* RegistrationView.swift */; };
+		B03FD7292B9C678600D75F18 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FD7282B9C678600D75F18 /* LoginView.swift */; };
+		B03FD72C2B9C67C200D75F18 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FD72B2B9C67C200D75F18 /* API.swift */; };
+		B03FD72F2B9C683700D75F18 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FD72E2B9C683700D75F18 /* Globals.swift */; };
+		B03FD7312B9C983900D75F18 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B03FD7302B9C983900D75F18 /* GoogleService-Info.plist */; };
+		B03FD7342B9C99BB00D75F18 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B03FD7332B9C99BB00D75F18 /* FirebaseAuth */; };
+		B03FD7362B9C99BB00D75F18 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B03FD7352B9C99BB00D75F18 /* FirebaseFirestore */; };
+		B03FD7382B9C99BB00D75F18 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B03FD7372B9C99BB00D75F18 /* FirebaseFirestoreSwift */; };
+		B03FD73A2B9C99BB00D75F18 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = B03FD7392B9C99BB00D75F18 /* FirebaseStorage */; };
 		B0D6F1062B9C5C4E0085DD2A /* MSSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D6F1052B9C5C4E0085DD2A /* MSSApp.swift */; };
 		B0D6F1082B9C5C4E0085DD2A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D6F1072B9C5C4E0085DD2A /* ContentView.swift */; };
 		B0D6F10A2B9C5C510085DD2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0D6F1092B9C5C510085DD2A /* Assets.xcassets */; };
@@ -14,6 +43,31 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B03FD6F62B9C612000D75F18 /* Calculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculations.swift; sourceTree = "<group>"; };
+		B03FD6F82B9C614D00D75F18 /* Judgement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Judgement.swift; sourceTree = "<group>"; };
+		B03FD6FB2B9C619100D75F18 /* RegisterTradingHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTradingHistoryModel.swift; sourceTree = "<group>"; };
+		B03FD6FD2B9C61C700D75F18 /* RegisterAreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAreaData.swift; sourceTree = "<group>"; };
+		B03FD6FF2B9C61E500D75F18 /* TradingHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradingHistoryModel.swift; sourceTree = "<group>"; };
+		B03FD7012B9C61FC00D75F18 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B03FD7042B9C63F000D75F18 /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
+		B03FD7062B9C641800D75F18 /* RegisterConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterConfirmView.swift; sourceTree = "<group>"; };
+		B03FD7082B9C646A00D75F18 /* RecordArea5minutesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordArea5minutesView.swift; sourceTree = "<group>"; };
+		B03FD70A2B9C64A600D75F18 /* RecordArea15minutesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordArea15minutesView.swift; sourceTree = "<group>"; };
+		B03FD70C2B9C64EC00D75F18 /* CheckboxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxStyle.swift; sourceTree = "<group>"; };
+		B03FD70E2B9C650F00D75F18 /* EditConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditConfirmView.swift; sourceTree = "<group>"; };
+		B03FD7102B9C655300D75F18 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		B03FD7152B9C65E200D75F18 /* EditTradingHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTradingHistoryView.swift; sourceTree = "<group>"; };
+		B03FD7172B9C660500D75F18 /* TradingHistoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradingHistoryDetailView.swift; sourceTree = "<group>"; };
+		B03FD7192B9C662600D75F18 /* TradingHistoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradingHistoryListView.swift; sourceTree = "<group>"; };
+		B03FD71B2B9C666800D75F18 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		B03FD71D2B9C668800D75F18 /* RegisteredContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredContentView.swift; sourceTree = "<group>"; };
+		B03FD71F2B9C66A700D75F18 /* RegisterTradingHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTradingHistoryView.swift; sourceTree = "<group>"; };
+		B03FD7232B9C673500D75F18 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		B03FD7262B9C676F00D75F18 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		B03FD7282B9C678600D75F18 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		B03FD72B2B9C67C200D75F18 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		B03FD72E2B9C683700D75F18 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		B03FD7302B9C983900D75F18 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B0D6F1022B9C5C4D0085DD2A /* MSS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0D6F1052B9C5C4E0085DD2A /* MSSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSSApp.swift; sourceTree = "<group>"; };
 		B0D6F1072B9C5C4E0085DD2A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -26,12 +80,125 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B03FD7342B9C99BB00D75F18 /* FirebaseAuth in Frameworks */,
+				B03FD73A2B9C99BB00D75F18 /* FirebaseStorage in Frameworks */,
+				B03FD7362B9C99BB00D75F18 /* FirebaseFirestore in Frameworks */,
+				B03FD7382B9C99BB00D75F18 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B03FD6F52B9C60EA00D75F18 /* Logics */ = {
+			isa = PBXGroup;
+			children = (
+				B03FD6F62B9C612000D75F18 /* Calculations.swift */,
+				B03FD6F82B9C614D00D75F18 /* Judgement.swift */,
+			);
+			path = Logics;
+			sourceTree = "<group>";
+		};
+		B03FD6FA2B9C616F00D75F18 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B03FD6FB2B9C619100D75F18 /* RegisterTradingHistoryModel.swift */,
+				B03FD6FD2B9C61C700D75F18 /* RegisterAreaData.swift */,
+				B03FD6FF2B9C61E500D75F18 /* TradingHistoryModel.swift */,
+				B03FD7012B9C61FC00D75F18 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B03FD7032B9C638A00D75F18 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B03FD70C2B9C64EC00D75F18 /* CheckboxStyle.swift */,
+				B03FD70E2B9C650F00D75F18 /* EditConfirmView.swift */,
+				B03FD7102B9C655300D75F18 /* InputView.swift */,
+				B03FD7062B9C641800D75F18 /* RegisterConfirmView.swift */,
+				B03FD7082B9C646A00D75F18 /* RecordArea5minutesView.swift */,
+				B03FD70A2B9C64A600D75F18 /* RecordArea15minutesView.swift */,
+				B03FD7042B9C63F000D75F18 /* SettingsRowView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		B03FD7122B9C658500D75F18 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				B03FD72A2B9C67A900D75F18 /* API */,
+				B03FD7212B9C66F700D75F18 /* Authentication */,
+				B03FD7142B9C65BD00D75F18 /* Main */,
+				B03FD7132B9C659300D75F18 /* Root */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		B03FD7132B9C659300D75F18 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				B0D6F1072B9C5C4E0085DD2A /* ContentView.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		B03FD7142B9C65BD00D75F18 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				B03FD7152B9C65E200D75F18 /* EditTradingHistoryView.swift */,
+				B03FD71B2B9C666800D75F18 /* MainMenuView.swift */,
+				B03FD7172B9C660500D75F18 /* TradingHistoryDetailView.swift */,
+				B03FD7192B9C662600D75F18 /* TradingHistoryListView.swift */,
+				B03FD71D2B9C668800D75F18 /* RegisteredContentView.swift */,
+				B03FD71F2B9C66A700D75F18 /* RegisterTradingHistoryView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		B03FD7212B9C66F700D75F18 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				B03FD7252B9C675300D75F18 /* View */,
+				B03FD7222B9C672100D75F18 /* ViewModel */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		B03FD7222B9C672100D75F18 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B03FD7232B9C673500D75F18 /* AuthViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B03FD7252B9C675300D75F18 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B03FD7282B9C678600D75F18 /* LoginView.swift */,
+				B03FD7262B9C676F00D75F18 /* RegistrationView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B03FD72A2B9C67A900D75F18 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				B03FD72B2B9C67C200D75F18 /* API.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		B03FD72D2B9C67E200D75F18 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B03FD72E2B9C683700D75F18 /* Globals.swift */,
+				B0D6F1052B9C5C4E0085DD2A /* MSSApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		B0D6F0F92B9C5C4D0085DD2A = {
 			isa = PBXGroup;
 			children = (
@@ -51,9 +218,13 @@
 		B0D6F1042B9C5C4D0085DD2A /* MSS */ = {
 			isa = PBXGroup;
 			children = (
-				B0D6F1052B9C5C4E0085DD2A /* MSSApp.swift */,
-				B0D6F1072B9C5C4E0085DD2A /* ContentView.swift */,
+				B03FD72D2B9C67E200D75F18 /* App */,
+				B03FD7122B9C658500D75F18 /* Core */,
+				B03FD7032B9C638A00D75F18 /* Components */,
+				B03FD6FA2B9C616F00D75F18 /* Models */,
+				B03FD6F52B9C60EA00D75F18 /* Logics */,
 				B0D6F1092B9C5C510085DD2A /* Assets.xcassets */,
+				B03FD7302B9C983900D75F18 /* GoogleService-Info.plist */,
 				B0D6F10B2B9C5C510085DD2A /* Preview Content */,
 			);
 			path = MSS;
@@ -83,6 +254,12 @@
 			dependencies = (
 			);
 			name = MSS;
+			packageProductDependencies = (
+				B03FD7332B9C99BB00D75F18 /* FirebaseAuth */,
+				B03FD7352B9C99BB00D75F18 /* FirebaseFirestore */,
+				B03FD7372B9C99BB00D75F18 /* FirebaseFirestoreSwift */,
+				B03FD7392B9C99BB00D75F18 /* FirebaseStorage */,
+			);
 			productName = MSS;
 			productReference = B0D6F1022B9C5C4D0085DD2A /* MSS.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +288,9 @@
 				Base,
 			);
 			mainGroup = B0D6F0F92B9C5C4D0085DD2A;
+			packageReferences = (
+				B03FD7322B9C99BB00D75F18 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = B0D6F1032B9C5C4D0085DD2A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,6 +307,7 @@
 			files = (
 				B0D6F10D2B9C5C510085DD2A /* Preview Assets.xcassets in Resources */,
 				B0D6F10A2B9C5C510085DD2A /* Assets.xcassets in Resources */,
+				B03FD7312B9C983900D75F18 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +318,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B03FD71C2B9C666800D75F18 /* MainMenuView.swift in Sources */,
+				B03FD7092B9C646A00D75F18 /* RecordArea5minutesView.swift in Sources */,
+				B03FD7272B9C676F00D75F18 /* RegistrationView.swift in Sources */,
+				B03FD70F2B9C650F00D75F18 /* EditConfirmView.swift in Sources */,
 				B0D6F1082B9C5C4E0085DD2A /* ContentView.swift in Sources */,
+				B03FD7202B9C66A700D75F18 /* RegisterTradingHistoryView.swift in Sources */,
+				B03FD72F2B9C683700D75F18 /* Globals.swift in Sources */,
+				B03FD7292B9C678600D75F18 /* LoginView.swift in Sources */,
+				B03FD7162B9C65E200D75F18 /* EditTradingHistoryView.swift in Sources */,
+				B03FD70B2B9C64A600D75F18 /* RecordArea15minutesView.swift in Sources */,
+				B03FD71E2B9C668800D75F18 /* RegisteredContentView.swift in Sources */,
+				B03FD6FE2B9C61C700D75F18 /* RegisterAreaData.swift in Sources */,
+				B03FD6F92B9C614D00D75F18 /* Judgement.swift in Sources */,
+				B03FD6F72B9C612000D75F18 /* Calculations.swift in Sources */,
+				B03FD7072B9C641800D75F18 /* RegisterConfirmView.swift in Sources */,
+				B03FD71A2B9C662600D75F18 /* TradingHistoryListView.swift in Sources */,
+				B03FD7022B9C61FC00D75F18 /* User.swift in Sources */,
+				B03FD7002B9C61E500D75F18 /* TradingHistoryModel.swift in Sources */,
+				B03FD6FC2B9C619100D75F18 /* RegisterTradingHistoryModel.swift in Sources */,
 				B0D6F1062B9C5C4E0085DD2A /* MSSApp.swift in Sources */,
+				B03FD72C2B9C67C200D75F18 /* API.swift in Sources */,
+				B03FD7182B9C660500D75F18 /* TradingHistoryDetailView.swift in Sources */,
+				B03FD7242B9C673500D75F18 /* AuthViewModel.swift in Sources */,
+				B03FD7112B9C655300D75F18 /* InputView.swift in Sources */,
+				B03FD7052B9C63F000D75F18 /* SettingsRowView.swift in Sources */,
+				B03FD70D2B9C64EC00D75F18 /* CheckboxStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +485,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -309,6 +515,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -344,6 +551,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B03FD7322B9C99BB00D75F18 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.22.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B03FD7332B9C99BB00D75F18 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B03FD7322B9C99BB00D75F18 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		B03FD7352B9C99BB00D75F18 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B03FD7322B9C99BB00D75F18 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		B03FD7372B9C99BB00D75F18 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B03FD7322B9C99BB00D75F18 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		B03FD7392B9C99BB00D75F18 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B03FD7322B9C99BB00D75F18 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B0D6F0FA2B9C5C4D0085DD2A /* Project object */;
 }
