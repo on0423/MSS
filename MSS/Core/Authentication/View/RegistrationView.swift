@@ -99,6 +99,13 @@ struct RegistrationView: View {
         }
         .background(Color.blue2)
         .foregroundStyle(.white)
+        .onTapGesture {
+            hideKeyboard()
+        }
+    }
+    
+    private func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 

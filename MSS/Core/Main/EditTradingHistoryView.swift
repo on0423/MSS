@@ -337,6 +337,9 @@ struct EditTradingHistoryView: View {
         .padding(.top)
         .background(Color.blue2)
         .foregroundStyle(.white)
+        .onTapGesture {
+            hideKeyboard()
+        }
         .navigationBarTitle("登録内容", displayMode: .inline)
         .sheet(isPresented: $isConfirmModalVisible) {
             // 確認用のモーダルビューを定義
@@ -364,6 +367,11 @@ struct EditTradingHistoryView: View {
                 )
             }
         }
+    }
+    
+    // キーボードを非表示
+    private func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     
     // 履歴編集APIを呼び出して、データを保存し、入力情報をクリアする

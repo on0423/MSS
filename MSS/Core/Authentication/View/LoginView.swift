@@ -73,6 +73,9 @@ struct LoginView: View {
             }
             .background(Color.blue2)
             .foregroundStyle(.white)
+            .onTapGesture {
+                hideKeyboard()
+            }
         }
 //        .alert("エラー", isPresented: $viewModel.hasError, presenting: viewModel.errorMessage) { message in
 //            Button("OK") {
@@ -81,6 +84,11 @@ struct LoginView: View {
 //        } message: { message in
 //            Text(viewModel.errorMessage ?? "不明なエラーが発生しました。")
 //        }
+    }
+    
+    // キーボードを非表示
+    private func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 

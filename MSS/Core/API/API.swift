@@ -197,7 +197,7 @@ func fetchTradingHistory1stAPI(userID: String) async throws -> [TradingHistoryMo
 func searchTradingHistoryAPI(userID: String, timeAxis: String, selectedOption: String, startDate: Date, finishDate: Date) async throws -> [TradingHistoryModel] {
     let db = Firestore.firestore()
     var tradingHistoryList: [TradingHistoryModel] = []
-    var calendar = Calendar.current
+    let calendar = Calendar.current
     
     // コレクション名の判定
     let collectionName: String
